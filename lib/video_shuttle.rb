@@ -21,7 +21,6 @@ module VideoShuttle
       "https://rubytapas.dpdcart.com/feed",
       userpwd: "#{dpd_login}:#{dpd_password}")
     response.code == 200 or die "Feed fetch failed", response
-    return response
     feed_doc = Nokogiri::XML(response.body)
     items = feed_doc.xpath("//item")
     episodes = items.map{|item|
